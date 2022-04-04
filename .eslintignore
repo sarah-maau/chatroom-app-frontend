@@ -1,0 +1,9 @@
+**/jest.config.js
+**/node_modules
+**/dist
+**/build
+**/sonar-project.js
+**/config-overrides.js
+.next/
+out/
+**/public

@@ -1,0 +1,46 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "unused-imports"
+  ],
+  "rules": {
+    "unused-imports/no-unused-imports": "error",
+    "semi": [
+      "error",
+      "never"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "import/first": [
+      "error",
+      "absolute-first"
+    ],
+    "import/no-anonymous-default-export": [
+      "off"
+    ],
+    "react/display-name": [
+      "warn"
+    ],
+    "react-hooks/exhaustive-deps": "error",
+    "@next/next/no-sync-scripts": [
+      "warn"
+    ]
+  }
+}
