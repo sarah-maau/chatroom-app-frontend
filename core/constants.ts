@@ -1,3 +1,3 @@
-const DEFAULT_LOCALE = 'fr'
+const SPOILER_TWITTER_HASHTAG = 'SpoilerWithoutContext'
 
-export { DEFAULT_LOCALE }
+export { SPOILER_TWITTER_HASHTAG }
