@@ -85,7 +85,7 @@ font-size: ${(props) => props.theme.fontSize?.small};
  ${({isAuthor}) => isAuthor===true && css`
      justify-content: flex-end;
      text-align:end;
-     color: ${(props) => props.theme.messageBar?.textColor};
+     color: white;
       margin-left: 40%;
       background: ${(props) => props.theme.commonGradient};
       background-attachment: fixed;
