@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled, {keyframes, css} from 'styled-components'
 import Avatar from 'react-avatar'
+import {breakpoints} from "../../theme/breakpoints";
 
 interface IMessageProps {
     username: string
@@ -84,18 +85,28 @@ font-size: ${(props) => props.theme.fontSize?.small};
  ${({isAuthor}) => isAuthor===true && css`
      justify-content: flex-end;
      text-align:end;
-      color: white;
-      margin-left: 50%;
+     color: ${(props) => props.theme.messageBar?.textColor};
+      margin-left: 40%;
       background: ${(props) => props.theme.commonGradient};
       background-attachment: fixed;
       position: relative;
+      
+      @media ${breakpoints.tablet} {
+        margin-left: 50%;
+      }
+      
  `}
  
 ${({isAuthor}) => isAuthor===false && css`
       position: relative;
-      margin-right: 25%;
+      margin-right: 20%;
       background-color: #eee;
       align-items: flex-start;
+      color: #4F5660;
+      
+      @media ${breakpoints.laptopM} {
+      margin-right: 25%;
+    }
  `}
 `
 

@@ -6,14 +6,11 @@ import {useAppProviderContext} from '../../core/application/contexts/AppProvider
 import {createProfile} from '../../core/application/utils/CreateProfile'
 import ProfileDetails from '../../core/data/models/profileDetails/ProfileDetails'
 import ProfileItem from './ProfileItem'
+import {breakpoints} from '../../theme/breakpoints'
 
 export interface IProfileContent {
     id: string
     username: string
-}
-
-export interface IProfilesContent {
-    profiles: Array<IProfileContent>
 }
 
 const ProfileList: React.FC = () => {
@@ -45,15 +42,14 @@ const ProfileList: React.FC = () => {
         <ProfileTitle>Membres actifs</ProfileTitle>
         <ActiveUserIcon />
       </ProfileTitleContainer>
+
       <ProfileListContainer>
         {profiles && profiles?.map((profile, index) => {
           return(
             <ProfileItem name={profile.username} key={index}/>
           )
         })}
-
       </ProfileListContainer>
-
     </Container>
   )
 }
@@ -61,9 +57,14 @@ const ProfileList: React.FC = () => {
 export default ProfileList
 
 const Container = styled.div`
-  padding: 1rem;
-  height: 90vh;
-  width: 90%;
+ padding: 1rem;
+ height: 180px;
+ width: 100%; 
+ 
+ @media ${breakpoints.tablet} {
+        height: 90vh;   
+ } 
+  
 `
 
 const ProfileTitleContainer = styled.div`
@@ -92,10 +93,15 @@ const ProfileTitle = styled.div`
 `
 
 const ProfileListContainer = styled.div`
-    width:90%
+    width:100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 250px;
+    height: 100px;    
+    }
+    
+    @media ${breakpoints.tablet} {
+        height: 400px;  
+    }
 `
 
 

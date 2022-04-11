@@ -30,6 +30,7 @@ const MessageList: React.FC<IMessageListProps> = ({roomName}) => {
     }
   }, [roomId])
 
+
   const handleSubmitMessage = () => {
     if(newMessageRef.current === null) return
     const message = newMessageRef.current.value
@@ -80,7 +81,7 @@ const MessageList: React.FC<IMessageListProps> = ({roomName}) => {
       <MessageBarContainer isVisible={isVisible}>
         <MessageBarTextaera
           id='message'
-          placeholder={'Envoyez un message pour spoiler sur ??'}
+          placeholder={'Envoyez un message pour spoiler !'}
           data-emojiable='true'
           onChange={handleChange}
           onKeyPress={handleKeyPress}
@@ -107,11 +108,16 @@ interface IMessageBarContainerProps {
 }
 
 const Container = styled.div`
-  height: 90vh;
-  width: 90%;
+  height:40vh;
+  width: 90%; 
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  
+   @media ${breakpoints.laptopM} {
+      height: 90vh;
+      width: 90%; 
+    }
 `
 
 const MessagesContainer = styled.div`
@@ -125,11 +131,14 @@ ${({ isVisible }) => isVisible && css`
   background: ${(props) => props.theme.messageBar?.backgroundColor};
   border-radius: .7rem;
   padding: 1rem;
-  min-width: 20rem;
+  min-width: 40rem;
+  height: 8vh;
 
-  @media ${breakpoints.laptopM} {
+  @media ${breakpoints.tablet} {
     min-width: 50rem;
+    height: 10vh;
   }
+  
 `}
 ${({ isVisible }) => !isVisible && css`
   display: none;
@@ -139,7 +148,7 @@ ${({ isVisible }) => !isVisible && css`
 const MessageBarTextaera = styled.textarea`
   resize: none;
   border: none;
-  padding: 1rem;
+  
   width: 95%;
   background: ${(props) => props.theme.messageBar?.backgroundColor};
   color:${(props) => props.theme.messageBar?.textColor};
@@ -148,6 +157,10 @@ const MessageBarTextaera = styled.textarea`
 
   ::placeholder {
      color: ${(props) => props.theme.messageBar?.placeholderColor};
+  }
+  
+  @media ${breakpoints.laptopM} {
+    padding: 1rem;  
   }
 `
 

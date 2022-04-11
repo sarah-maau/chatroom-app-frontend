@@ -4,13 +4,13 @@ declare module 'styled-components' {
   export type ThemeName = 'common' | 'light' | 'dark'
   export interface DefaultTheme {
     name: ThemeName
-    fontFamily?: {
-      title?: string
-      standard?: string
+    fontFamily: {
+      title: string
+      standard: string
     }
     textColor?: {
-      main?: string
-      secondary?: string
+      main: string
+      secondary: string
     }
     backgroundColor?: string
     backgroundRoomSection?: string
@@ -19,16 +19,16 @@ declare module 'styled-components' {
       border?: string
     },
     fontSize: {
-      small?: string
-      normal?: string
-      big?: string
-      veryBig?: string
+      small: string
+      normal: string
+      big: string
+      veryBig: string
     }
     fontWeight: {
-      lightWeight?: number
-      normalWeight?: number
-      semiWeight?: number
-      boldWeight?: number
+      lightWeight: number
+      normalWeight: number
+      semiWeight: number
+      boldWeight: number
     }
     messageBar?: {
       placeholderColor?:string

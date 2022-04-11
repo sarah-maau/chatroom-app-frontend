@@ -62,7 +62,7 @@ const Onboarding: React.FC= () => {
             {
               errors.username && touched.username ? (<MessageError>{errors.username}</MessageError>) : null
             }
-            <UsernameButton type='submit' data-testid={'submit-button'}>C'est parti</UsernameButton>
+            <UsernameButton type='submit' data-testid='submit-button'>C'est parti</UsernameButton>
           </FormContainer>
         )}
       </Formik>
@@ -161,8 +161,8 @@ font-size: 1.2rem;
 const UsernameButton = styled.button`
 background:${(props) => props.theme?.buttonColor} ; 
 color: white;
-font-size: ${(props) => props.theme.fontSize?.normal}; 
-font-weight: ${(props) => props.theme.fontWeight?.semiWeight};
+font-size: ${(props) => props.theme.fontSize.normal}; 
+font-weight: ${(props) => props.theme.fontWeight.semiWeight};
 border: 1px solid ${(props) => props.theme?.buttonColor};
 border-radius: .8rem;
 padding: 1.2rem;
@@ -190,7 +190,7 @@ position:relative;
     letter-spacing: -4px;
   }      
   & div {
-    font-family:${(props) => props.theme.fontFamily?.title} !important;
+    font-family:${(props) => props.theme.fontFamily.title} !important;
     font-size:10rem;
     margin:0;
     line-height:1.2em; 
@@ -218,7 +218,7 @@ position:relative;
     letter-spacing: -4px;
   }      
   & div {
-    font-family:${(props) => props.theme.fontFamily?.title} !important;
+    font-family:${(props) => props.theme.fontFamily.title} !important;
     font-size:10rem;
     margin:0;
     line-height:1.2em; 
@@ -245,7 +245,7 @@ position:relative;
     letter-spacing: -4px;
   }      
   & div {
-    font-family:${(props) => props.theme.fontFamily?.title} !important;
+    font-family:${(props) => props.theme.fontFamily.title} !important;
     font-size:10rem;
     margin:0;
     line-height:1.2em;

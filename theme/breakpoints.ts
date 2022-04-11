@@ -6,6 +6,7 @@ export const deviceSizes = {
   laptop: '1024px',
   laptopM: '1200px',
   laptopL: '1440px',
+  laptopXL: '1600px',
   desktop: '1980px',
   wide: '2560px'
 }
@@ -18,6 +19,7 @@ export const breakpoints = {
   laptop: `(min-width: ${deviceSizes.laptop})`,
   laptopM: `(min-width: ${deviceSizes.laptopM})`,
   laptopL: `(min-width: ${deviceSizes.laptopL})`,
+  laptopXL: `(min-width: ${deviceSizes.laptop})`,
   desktop: `(min-width: ${deviceSizes.desktop})`,
   wide: `(min-width: ${deviceSizes.wide})`
 }

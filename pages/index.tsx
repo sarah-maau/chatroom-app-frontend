@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import type { NextPage } from 'next'
 import styled, {css, useTheme} from 'styled-components'
-
 import {useUserThemeContext} from '../core/application/contexts/UserThemeContext'
 import {darkTheme, lightTheme} from '../theme/Theme'
 import {useSocketContext} from '../core/application/contexts/SocketContext'
@@ -57,7 +56,10 @@ interface IChatroomContainerProps  {
 
 const Container = styled.div`
   max-height: 100vh;
+  overflow-y: scroll;  
+ 
 `
+
 const Main = styled.main``
 
 
@@ -69,13 +71,34 @@ const ChatroomContainer = styled.div<IChatroomContainerProps>`
   ${({ isVisible }) => isVisible && css`
     display: flex;
     flex-direction: column;
+    
+    div:nth-of-type(1) { 
+      order: 1; 
+      }
+    div:nth-of-type(2) { 
+      order: 3; 
+      }
+    div:nth-of-type(3) { 
+    order: 2; 
+    }
+    
     > * {
     gap: 1rem;
     }  
     
     @media ${breakpoints.laptopM} {
       display: grid;
-      grid-template-columns: 25% 55% 20%;  
+      grid-template-columns: 25% 55% 20%; 
+      
+      div:nth-of-type(1) { 
+        order: 1; 
+      }
+      div:nth-of-type(2) { 
+        order: 2; 
+      }
+      div:nth-of-type(3) { 
+      order: 3; 
+      } 
     }
   `}
    

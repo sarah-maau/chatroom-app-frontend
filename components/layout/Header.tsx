@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ToggleSwitchMode, {IAppTheme} from './ToggleSwitchMode'
 import ProfileItem from '../profile/ProfileItem'
 import {useSocketContext} from '../../core/application/contexts/SocketContext'
+import {breakpoints} from '../../theme/breakpoints'
 
 interface IHeaderProps {
     theme: IAppTheme
@@ -16,7 +17,7 @@ const Header: React.FC<IHeaderProps> = ({theme, onClick}) => {
       <HeaderWrapper>
         <NavOne>
           {theme === 'dark' ? (<Logo src={'/chatLogoDark.png'}  alt='logo-dark'/>):(<Logo src={'/chatLogoLight.png'}  alt='logo-light'/>)}
-          <HeaderTitle>Chat'Poil</HeaderTitle>
+          <HeaderTitle>Chat'spoil</HeaderTitle>
         </NavOne>
         <NavTwo />
         <NavThree>
@@ -34,27 +35,41 @@ export default Header
 
 const HeaderContainer = styled.div`
 padding: .5rem 0;
-width:100%;
+width:95%;
 backdrop-filter: blur(5px);
+
+
+ @media ${breakpoints.laptopM} {
+   width:100%;
+ }
+
 `
 const HeaderWrapper = styled.header`
 display: flex;
 flex-direction: row;
 align-items: center;
+
+
 `
 
 const NavOne = styled.div`
-flex: 1;
+flex: 2;
 display: flex;
 justify-content: center;
 align-items: center;
-gap:1rem;
+gap:1rem; 
+
+  @media ${breakpoints.tablet} {
+      flex: 1;   
+  }
+ 
 `
 const NavTwo = styled.div`
-flex: 2 ;
+flex: 2;
 display: flex;
 justify-content: center;
 align-items: center;
+
 `
 const NavThree = styled.div`
 flex: 1 ;

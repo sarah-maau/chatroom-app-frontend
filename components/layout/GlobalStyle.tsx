@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: ${({ theme }) => theme.fontFamily?.standard};
+    font-family: ${({ theme }) => theme.fontFamily.standard};
     font-size: 10px;
     height: 100vh;
     scroll-behavior: smooth;
@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   input, textarea {
     /* Remove ios safari input inner shadow */
     appearance: none;
-   font-family: ${({ theme }) => theme.fontFamily?.standard};
+   font-family: ${({ theme }) => theme.fontFamily.standard};
     outline: none;
   }
 
@@ -45,12 +45,12 @@ const GlobalStyle = createGlobalStyle`
   }
   
   h1 {
-    font-family: ${({ theme }) => theme.fontFamily?.title};
+    font-family: ${({ theme }) => theme.fontFamily.title};
   }
   
   button {
-   font-family: ${({ theme }) => theme.fontFamily?.standard};
-   font-size: ${({ theme }) => theme.fontSize?.small};
+   font-family: ${({ theme }) => theme.fontFamily.standard};
+   font-size: ${({ theme }) => theme.fontSize.small};
   }
 `
 

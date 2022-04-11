@@ -41,11 +41,26 @@ const RoomList: React.FC = () => {
   }
 
   const handleJoin = (key: string)  => {
+    console.log(roomId)
     if (key === roomId) {
       alert('Vous êtes déjà dans cette room')
     }
     socket.emit(ClientEvent.JOIN_ROOM, key)
   }
+
+  const fakeRooms =
+    {
+      myroom: {name: 'blop'},
+      myroom1: {name: 'blop'},
+      myroom3: {name: 'blop'}
+    }
+
+  const completeRoom = {
+    ...rooms,
+    ...fakeRooms
+  }
+
+
 
   return (
     <Container>
