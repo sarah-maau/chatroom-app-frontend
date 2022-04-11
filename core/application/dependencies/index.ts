@@ -1,24 +1,20 @@
 import { IHttpClient } from '../../domain/httpClient/IHttpClient'
-import { IAuthProvider } from '../../domain/providers/IAuthProvider'
-import AuthProvider from '../../data/providers/AuthProvider'
 import HttpClient from '../../data/httpClient'
-import { API_ENDPOINT, GOOGLE_ANALYTICS_ID } from '../../config'
-import { ITracker } from '../../domain/analytics/tracker'
-import Tracker from '../../data/analytics'
+import { API_ENDPOINT } from '../../config'
+import {IChatRoomProvider} from '../../domain/providers/IChatRoomProvider'
+import ChatRoomProvider from '../../data/providers/ChatRoomProvider'
+
 
 export interface IDependencies {
-  authProvider?: IAuthProvider
   httpClient: IHttpClient
-  tracker: ITracker
+  chatRoomProvider?: IChatRoomProvider
 }
 
 export const createDependencies = (): IDependencies => {
   const httpClient = new HttpClient(API_ENDPOINT)
-  const authProvider = new AuthProvider(httpClient)
-  const tracker = new Tracker(GOOGLE_ANALYTICS_ID)
+  const chatRoomProvider = new ChatRoomProvider(httpClient)
   return {
-    authProvider,
     httpClient,
-    tracker
+    chatRoomProvider
   }
 }

@@ -1,10 +1,8 @@
 import React from 'react'
-import { ITracker } from '../../domain/analytics/tracker'
-import { IAuthProvider } from '../../domain/providers/IAuthProvider'
+import { IChatRoomProvider} from '../../domain/providers/IChatRoomProvider'
 
 export interface IAppProviderContext {
-  authProvider?: IAuthProvider
-  tracker?: ITracker
+  chatRoomProvider?: IChatRoomProvider
 }
 
 export const AppProviderContext = React.createContext<IAppProviderContext>({})

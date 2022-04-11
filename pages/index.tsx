@@ -1,39 +1,49 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import styled, {useTheme} from 'styled-components'
-import HelloWorld from '../components/HelloWorld'
-import MessageBar from "../components/messageBar/MessageBar";
-import Room from "../components/room/Room";
-import ToggleSwitchMode from "../components/layout/ToggleSwitchMode"
-import {useUserThemeContext} from "../core/application/contexts/UserThemeContext";
-import {darkTheme, lightTheme} from "../theme/Theme";
-import Profile from "../components/profile/Profile";
+import styled, {css, useTheme} from 'styled-components'
+
+import {useUserThemeContext} from '../core/application/contexts/UserThemeContext'
+import {darkTheme, lightTheme} from '../theme/Theme'
+import {useSocketContext} from '../core/application/contexts/SocketContext'
+import Onboarding from '../components/onboarding/Onboarding'
+import Header from '../components/layout/Header'
+import RoomList from '../components/room/RoomList'
+import {breakpoints} from '../theme/breakpoints'
+import MessageList from '../components/message/MessageList'
+import ProfileList from '../components/profile/ProfileList'
+
 
 const Home: NextPage = () => {
-    const theme = useTheme()
-    const { currentTheme, setCurrentTheme } = useUserThemeContext()
+  const theme = useTheme()
+  const [visibleChatroom, setVisibleChatroom] = useState<boolean>(false)
+  const { currentTheme, setCurrentTheme } = useUserThemeContext()
+  const {  username } = useSocketContext()
 
-    const toggleUserTheme = () => {
-        if (currentTheme === lightTheme) {
-            setCurrentTheme(darkTheme)
-        } else {
-            setCurrentTheme(lightTheme)
-        }
+  const toggleUserTheme = () => {
+    if (currentTheme === darkTheme) {
+      setCurrentTheme(lightTheme)
+    } else {
+      setCurrentTheme(darkTheme)
     }
+  }
+
+  useEffect(() => {
+    if(username && username.length>0) {
+      setVisibleChatroom(true)
+    }
+  }, [username])
 
   return (
     <Container>
-      <Head>
-        <title>Next App</title>
-
-          <meta name='description' content='🎉' />
-      </Head>
+      <Header theme={theme.name} onClick={toggleUserTheme} />
       <Main>
-        <HelloWorld name='🎉' />
-          <Profile />
+        {!username && (<Onboarding />)}
+        <ChatroomContainer isVisible={visibleChatroom}>
+          <RoomList />
+          <MessageList />
+          <ProfileList />
+        </ChatroomContainer>
       </Main>
-        <ToggleSwitchMode theme={theme.name} onClick={toggleUserTheme}/>
 
     </Container>
   )
@@ -41,20 +51,33 @@ const Home: NextPage = () => {
 
 export default Home
 
+interface IChatroomContainerProps  {
+  isVisible: boolean
+}
+
 const Container = styled.div`
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  max-height: 100vh;
 `
-const Main = styled.main`
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const Main = styled.main``
+
+
+const ChatroomContainer = styled.div<IChatroomContainerProps>`
+  ${({ isVisible }) => !isVisible && css`
+    display:none;
+  `}
+  
+  ${({ isVisible }) => isVisible && css`
+    display: flex;
+    flex-direction: column;
+    > * {
+    gap: 1rem;
+    }  
+    
+    @media ${breakpoints.laptopM} {
+      display: grid;
+      grid-template-columns: 25% 55% 20%;  
+    }
+  `}
+   
 `
+

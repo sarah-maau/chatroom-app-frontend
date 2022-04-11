@@ -7,7 +7,7 @@ export interface IUserThemeContext {
 }
 
 export const UserThemeContext = React.createContext<IUserThemeContext>({
-    setCurrentTheme: () => console.warn('setCurrentTheme is not implemented in the current provider')
+  setCurrentTheme: () => console.warn('setCurrentTheme is not implemented in the current provider')
 })
 
 export const useUserThemeContext = (): IUserThemeContext => React.useContext(UserThemeContext)

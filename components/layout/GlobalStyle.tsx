@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: 'Francois One', sans-serif;
+    font-family: ${({ theme }) => theme.fontFamily?.standard};
     font-size: 10px;
     height: 100vh;
     scroll-behavior: smooth;
@@ -36,12 +36,21 @@ const GlobalStyle = createGlobalStyle`
   input, textarea {
     /* Remove ios safari input inner shadow */
     appearance: none;
-    font-family: 'Francois One', sans-serif;
+   font-family: ${({ theme }) => theme.fontFamily?.standard};
     outline: none;
   }
 
   b, strong {
-    font-weight: ${({ theme }) => theme.weight.boldWeight};
+    font-weight: ${({ theme }) => theme.fontWeight.boldWeight};
+  }
+  
+  h1 {
+    font-family: ${({ theme }) => theme.fontFamily?.title};
+  }
+  
+  button {
+   font-family: ${({ theme }) => theme.fontFamily?.standard};
+   font-size: ${({ theme }) => theme.fontSize?.small};
   }
 `
 

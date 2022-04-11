@@ -1,7 +1,22 @@
-import { ILoginData, ILoginPayload, IUserData } from './index'
+import {
+  IProfileDetailsData,
+  IProfileData,
+  IRoomDetailsData,
+  IRoomData, IRoomListData
+} from './index'
+import {IMessageDetails} from '../providers'
 
 export interface IHttpClient {
-  login(payload: ILoginPayload): Promise<ILoginData>
+    getProfileDetails(id: string): Promise<IProfileDetailsData>
 
-  getCurrentUser(): Promise<IUserData>
+    getProfile(): Promise<IProfileData>
+
+    getMessageDetails(id: string): Promise<IMessageDetails>
+
+    getRoomDetails(id: string): Promise<IRoomDetailsData>
+
+    getRoom(id: string): Promise<IRoomData>
+
+    getRoomList(): Promise<IRoomListData>
+
 }
